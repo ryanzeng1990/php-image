@@ -1,6 +1,7 @@
 FROM php:8.1.0-fpm-alpine
 
 RUN apk add --no-cache \
+    gd \
     curl \
     git \
     bash \
@@ -9,6 +10,17 @@ RUN apk add --no-cache \
     postgresql-client \
     libc6-compat && \
     ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
+
+# Install dependencies for GD and install GD with support for jpeg, png webp and freetype
+# Info about installing GD in PHP https://www.php.net/manual/en/image.installation.php
+RUN apk add --no-cache \
+        libjpeg-turbo-dev \
+        libpng-dev \
+        libwebp-dev \
+        freetype-dev
+
+RUN docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype
+RUN docker-php-ext-install gd
 
 RUN apk add --update linux-headers
 
