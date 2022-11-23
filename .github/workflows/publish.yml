@@ -17,8 +17,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.SECRET_TOKEN }}
 
-      - name: Build the hello-docker Docker image
+      - name: Build Docker Image
         run: |
-          docker build . --tag ghcr.io/ryanzeng1990/php:latest
+          docker-compose up --build -d
+          docker tag ofload/php:latest ghcr.io/ryanzeng1990/php:latest
           docker run ghcr.io/ryanzeng1990/php:latest
           docker push ghcr.io/ryanzeng1990/php:latest
