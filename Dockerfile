@@ -43,4 +43,4 @@ RUN apk add gnu-libiconv=1.15-r3 --update-cache --repository http://dl-cdn.alpin
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so
 
 # Use the default production configuration
-# RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
