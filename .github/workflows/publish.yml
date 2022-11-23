@@ -7,7 +7,7 @@ jobs:
     name: "Deployment"
     runs-on: "ubuntu-latest"
     permissions:
-      issues: write
+      packages: write
     steps:
       - name: "Checkout Code"
         uses: "actions/checkout@v3"
