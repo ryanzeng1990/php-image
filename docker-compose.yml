@@ -7,5 +7,3 @@ services:
             dockerfile: Dockerfile
         image: ofload/php
         container_name: ofload-php
-        restart: unless-stopped
-        tty: true
